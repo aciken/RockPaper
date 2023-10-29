@@ -24,8 +24,13 @@ const getComputerChoice = () =>{
 
 computerChoice = getComputerChoice();
 
-const play = (playerSelection) =>{
+const play = () =>{
 
+
+const playerSelection = window.prompt("Rock, Paper or Scissors", "");
+if(playerSelection !== 'Rock' || playerSelection !== 'Paper' || playerSelection !== 'Scissors'){
+
+};
 let computerSelection = getComputerChoice();
 
 
@@ -54,7 +59,7 @@ console.log(`Computer selection: ${computerSelection}`);
             console.log('Draw');
             draw++;
         }  
-    } else{
+    } else if(playerSelection == "Scissors"){
         if(computerSelection === 'Paper'){
             console.log('You won, Scissprs beat Paper');
             win++;
@@ -65,13 +70,15 @@ console.log(`Computer selection: ${computerSelection}`);
             console.log('Draw');
             draw++;
         }
+    } else{
+        console.log('Wrong Input');
     }
 }
 
 
 const game = () =>{
     for(let i = 0; i < 5; i++){
-       play(playerChoice);
+       play();
 }
 if(win > lose){
     console.log('YOU HAVE WON A GAME');
