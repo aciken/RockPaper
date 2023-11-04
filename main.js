@@ -8,7 +8,9 @@ let draw = 0;
 let round = 1;
 
 const resultShow = document.querySelector('#result');
-
+const roundWinner = document.querySelector('#roundWinner');
+const liveScore = document.querySelector('#liveScore');
+const roundShowNum = document.querySelector('#roundShowNum');
 
 
 
@@ -35,10 +37,13 @@ computerChoice = getComputerChoice();
 const play = () =>{
 
 
+
+
      buttons.forEach(button =>{
         button.addEventListener('click', () =>{
             playerSelection = button.textContent;
             let computerSelection = getComputerChoice();
+            resultShow.textContent = '';
 
 
             console.log(`Your selection: ${playerSelection}`);
@@ -46,40 +51,43 @@ const play = () =>{
             
                 if(playerSelection == 'Rock'){
                     if(computerSelection == 'Scissors'){
-                        console.log('You won, Rock beats Scissors')
+                        roundWinner.textContent = 'You won, Rock beats Scissors';
                         win++;
                     } else if(computerSelection == 'Paper'){
-                        console.log('You lose, Paper beats Rock');
+                        roundWinner.textContent = 'You lose, Paper beats Rock';
                         lose++;
                     } else {
-                        console.log('Draw');
+                        roundWinner.textContent = 'Draw';
                         draw++
                     }
                 } else if(playerSelection == 'Paper'){
                     if(computerSelection == 'Rock'){
-                        console.log('You won, Paper beats Rock');
+                        roundWinner.textContent = 'You won, Paper beats Rock';
                         win++;
                     } else if(computerSelection == 'Scissors'){
-                        console.log('You lose, Scissors beat Paper');
+                        roundWinner.textContent = 'You lose, Scissors beat Paper';
                         lose++;
                     } else {
-                        console.log('Draw');
+                        roundWinner.textContent = 'Draw';
                         draw++;
                     }  
                 } else if(playerSelection == "Scissors"){
                     if(computerSelection == 'Paper'){
-                        console.log('You won, Scissprs beat Paper');
+                        roundWinner.textContent = 'You won, Scissprs beat Paper';
                         win++;
                     } else if(computerSelection == 'Rock'){
-                        console.log('You lose, Rock beats Scissors');
+                        roundWinner.textContent = 'You lose, Rock beats Scissors';
                         lose++;
                     } else {
-                        console.log('Draw');
+                        roundWinner.textContent = 'Draw';
                         draw++;
                     }
                 } else{
-                    console.log('Wrong Input');
+                    roundWinner.textContent = 'Wrong Input';
                 }
+
+                liveScore.textContent = `Wins:${win} Loses:${lose} Draws: ${draw}`;
+                roundShowNum.textContent = `Round:${round}`;
                 
                 if(round === 5){
                     if(win > lose){
@@ -94,10 +102,6 @@ const play = () =>{
                 }
 
                 round++;
-
-
-
-                
 
         })
     });
